@@ -16,7 +16,7 @@ Exécuter une image du serveur nginx : ``docker run -d -p 9999:80 nginx``
 
 Pour donner un nom précis à votre conteneur, on utilise --name. Exemple : docker run --name moningx -d -p 8989:80 nginx Cette commande permet de démarrer un conteneur dont le nom est moningnx. Pour pouvoir y accéder de l'extérieur (du moteur), on utilise la notion de redirection des ports. Ici, on va utiliser le port 8989pour y accéder comme ceci : localhost:8989
 
-Pour arrêtre un conteneur ``docker stop identifiant_conteneur``. Pour supprimer un conteneur, on doit d'abord l'arrêter : ``docker rm identifiant_conteneur``.
+Pour arrêter un conteneur ``docker stop identifiant_conteneur``. Pour supprimer un conteneur, on doit d'abord l'arrêter : ``docker rm identifiant_conteneur``.
 
 Pour lister toutes vos images docker images
 
