@@ -1,4 +1,5 @@
 # BigData5a
+** Commandes de bases
 
 ``docker run image_name`` : permet de créer et démarer une nouvelle instance de l'image (conteneur)
 
@@ -72,7 +73,7 @@ Pour accéder aux volumes (sous mac) :
 
 Une fois à l'intéreiur du conteneur, les volumes se trouvent dans le dossier : /var/lib/docker/volumes/
 
-La soslution ici : https://stackoverflow.com/questions/38532483/where-is-var-lib-docker-on-mac-os-x
+La solution ici : https://stackoverflow.com/questions/38532483/where-is-var-lib-docker-on-mac-os-x
 
 Gestion des variables d'environnement :
 
@@ -177,6 +178,3 @@ Publier une image sur DockerHub :
 Pour chercher une image par ligne de commande docker serach nom_image
 
 Exercice : publier une image de votre application Spring (utiliser une base de données H2)
-
-#JOOOO
-##jdiejdej
