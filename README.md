@@ -38,7 +38,7 @@ Exercice : démarer un conteneur à partir de l'image ubuntu et puis installer j
 
 Une fois à l'intérieur du conteneur, vous pouvez installer les outils dont vous avez besoin comme vous avez l'habitube de le faire en utilisant ubuntu.
 
-Si on veut installer par exemple Java, on procède de la façon suivante : on met d'abord à jour apt-get updateet puis apt-get install java. Si on veut utiliser vim comme éditeur apt-get install vim.
+Si on veut installer par exemple Java, on procède de la façon suivante : on met d'abord à jour ``apt-get update`` puis ``apt-get install java``. Si on veut utiliser vim comme éditeur ``apt-get install vim``.
 
 Pour inspecter un contenur et avoir des détails sous forme d'un ficheir json docker inspect id_conteneur
 
@@ -177,3 +177,6 @@ Publier une image sur DockerHub :
 Pour chercher une image par ligne de commande docker serach nom_image
 
 Exercice : publier une image de votre application Spring (utiliser une base de données H2)
+
+#JOOOO
+##jdiejdej
