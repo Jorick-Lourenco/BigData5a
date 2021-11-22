@@ -22,6 +22,8 @@ Pour lister toutes vos images docker images
 
 Pour forcer la suppression d'une image ou d'un conteneur : ``docker rmi -f nom_image``
 
+apt install default-jre -> installation JAVA
+
 La commande exec permet d'exécuter une commande dans un conteneur démarré
 
 Exemple : notre objectif est de démarrer un conteneur MySQL et d'exécuter le client mysql
@@ -46,7 +48,7 @@ Pour redémarrer un conteneur : ``docker start id_conteneur``
 
 Exercice : démarrer un conteneur nginx et changer le contenu du fichier index.html.
 
-La page index.html est par défaut dans le répertoire /usr/share/nginx/htm
+La page index.html est par défaut dans le répertoire /usr/share/nginx/html
 
 Notion de volume :
 
@@ -100,3 +102,56 @@ d. On quite le conteneur exit
 e. Pour créer une image à partir de ce conteneur docker commit -m "créeation d'une image ubuntu augumentée" id_conteur nom_notre_image
 
 2.Dockerfile
+
+a. Créer un fichier Dockerfile b. On part d'une image existente (la plus petite est alpine), copier éventuellemnet un programme et l'exécuter ....
+
+Exemple
+
+FROM openjdk
+COPY Application.class Application.class
+CMD ["java", "Application"]
+
+Pour Python :
+
+FROM ubuntu
+COPY application.py application.py
+RUN apt-get update
+RUN apt-get install python -y
+CMD ["python", "application.py"]
+
+FROM : permet de définir l'image source
+CMD : la commande par défautt lors de l'exécution du conteneur
+EXPOSE : permet de définir le port d'écoute par défaut
+RUN : permet d'exécuter des commandes à l'intérieur du conteneur
+ADD : permet d'ajouter des fichier dans le conteneur
+VOLUME : permet de définir les volumes utilisables
+
+``docker build -t ocr-docker-build``
+``docker run ocr-docker-build``
+
+Pour Nginx : 
+Dockerfile :
+
+FROM nginx
+COPY index.html /usr/share/nginx/html
+EXPOSE 80
+
+index.html : 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salut les nazes</title>
+</head>
+<body>
+
+</body>
+</html>
+
+``docker build -t imagejorick .``
+``docker run -d -p 8080 imagejorick``
+
+
+
+
