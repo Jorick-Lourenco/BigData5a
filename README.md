@@ -150,6 +150,7 @@ index.html :
 </html>
 
 ``docker build -t imagejorick .``
+
 ``docker run -d -p 8080 imagejorick``
 
 
