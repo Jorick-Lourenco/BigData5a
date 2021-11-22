@@ -136,7 +136,9 @@ FROM nginx
 COPY index.html /usr/share/nginx/html
 EXPOSE 80
 
-index.html : 
+index.html :
+
+--------------------------------------
 
 <!DOCTYPE html>
 <html lang="en">
@@ -148,6 +150,8 @@ index.html :
 
 </body>
 </html>
+
+---------------------------------------
 
 ``docker build -t imagejorick .``
 
