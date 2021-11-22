@@ -41,7 +41,7 @@ Une fois à l'intérieur du conteneur, vous pouvez installer les outils dont vou
 
 Si on veut installer par exemple Java, on procède de la façon suivante : on met d'abord à jour ``apt-get update`` puis ``apt-get install java``. Si on veut utiliser vim comme éditeur ``apt-get install vim``.
 
-Pour inspecter un contenur et avoir des détails sous forme d'un ficheir json docker inspect id_conteneur
+Pour inspecter un conteneur et avoir des détails sous forme d'un fichier json docker inspect id_conteneur
 
 Pour avoir les logs d'un contenur : ``docker logs id_conteneur``
 
