@@ -10,7 +10,7 @@ la valeur par défaut d'une image est latest
 
 ``docker ps`` : permet de lister tous les conteneurs qui sont en cours d'exécution. Chaque conteneur dispose d'un identifiant unique
 
-``docker ps -a`` : permet de lister tous les onteneur aver leurs statuts (Up, Exited Created)
+``docker ps -a`` : permet de lister tous les conteneurs aver leurs statuts (Up, Exited Created)
 
 Exécuter une image du serveur nginx : ``docker run -d -p 9999:80 nginx``
 
@@ -18,11 +18,11 @@ Pour donner un nom précis à votre conteneur, on utilise --name. Exemple : dock
 
 Pour arrêter un conteneur ``docker stop identifiant_conteneur``. Pour supprimer un conteneur, on doit d'abord l'arrêter : ``docker rm identifiant_conteneur``.
 
-Pour lister toutes vos images docker images
+Pour lister toutes vos images :  ``docker images``
 
 Pour forcer la suppression d'une image ou d'un conteneur : ``docker rmi -f nom_image``
 
-apt install default-jre -> installation JAVA
+``apt install default-jre`` -> installation JAVA
 
 La commande exec permet d'exécuter une commande dans un conteneur démarré
 
@@ -126,8 +126,16 @@ RUN : permet d'exécuter des commandes à l'intérieur du conteneur
 ADD : permet d'ajouter des fichier dans le conteneur
 VOLUME : permet de définir les volumes utilisables
 
-``docker build -t ocr-docker-build``
-``docker run ocr-docker-build``
+``docker build -t imagejorick``
+``docker run image jorick``
+
+Pour déposer sur Dockerhub :
+ ``docker tag imagejorick lourencoj/syoucefjoseph``
+ ``docker push lourencoj/syoucefjoseph``
+ 
+ Disponible via : ``docker pull lourencoj/syoucefjoseph``
+ 
+ 
 
 Pour Nginx : 
 Dockerfile :
