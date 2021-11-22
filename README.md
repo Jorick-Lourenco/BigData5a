@@ -1,5 +1,5 @@
 # BigData5a
-** Commandes de bases
+## Commandes de bases
 
 ``docker run image_name`` : permet de créer et démarer une nouvelle instance de l'image (conteneur)
 
