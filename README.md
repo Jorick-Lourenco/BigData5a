@@ -169,8 +169,8 @@ index.html :
 
 Publier une image sur DockerHub :
 
-1.Créer son image, soit josephadd
-2.Créer un dépôt dockerHub syoucef/joseph
+1. Créer son image, soit josephadd
+2. Créer un dépôt dockerHub syoucef/joseph
 3. Se connecter à DockerHub via ligne de commande : docker login (facultatif si on utilise docker desktop)
 4. Créer un lien entre l'image josephaddet syoucef/joseph : docker tag josephadd syoucef/joseph
 5. Envoyer l'image vers Dockerhub docker push syoucef/joseph
