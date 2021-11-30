@@ -137,6 +137,7 @@ VOLUME : permet de définir les volumes utilisables
 Mes commandes :
 
 **``docker build -t imagejorick .``**
+
 **``docker run image jorick``**
 
 Publier une image sur DockerHub :
@@ -147,9 +148,10 @@ Publier une image sur DockerHub :
 4. Créer un lien entre l'image josephaddet syoucef/joseph : docker tag josephadd syoucef/joseph
 5. Envoyer l'image vers Dockerhub docker push syoucef/joseph
 
-Pour chercher une image par ligne de commande docker serach nom_image
+Pour chercher une image par ligne de commande ``docker serach nom_image``
 
  **``docker tag imagejorick lourencoj/syoucefjoseph``**
+ 
  **``docker push lourencoj/syoucefjoseph``**
  
  Disponible via : ``docker pull lourencoj/syoucefjoseph``
