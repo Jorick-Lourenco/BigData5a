@@ -1,9 +1,9 @@
 # BigData5a
 ## Commandes de bases - 1er cours
 
-``docker run image_name`` : permet de créer et démarer une nouvelle instance de l'image (conteneur)
+**``docker run image_name``** : permet de créer et démarer une nouvelle instance de l'image (conteneur)
 
-``docker run -d image_name:tag`` : permet de démarrer conteneur en arrière plan
+**``docker run -d image_name:tag``** : permet de démarrer conteneur en arrière plan
 
 la valeur par défaut d'une image est latest
 
