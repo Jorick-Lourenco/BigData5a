@@ -121,27 +121,17 @@ CMD ["java", "Application"]
 
 Pour Python :
 
-FROM ubuntu
-
-COPY application.py application.py
-
-RUN apt-get update
-
-RUN apt-get install python -y
-
-CMD ["python", "application.py"]
-
-FROM : permet de définir l'image source
-
-CMD : la commande par défautt lors de l'exécution du conteneur
-
-EXPOSE : permet de définir le port d'écoute par défaut
-
-RUN : permet d'exécuter des commandes à l'intérieur du conteneur
-
-ADD : permet d'ajouter des fichier dans le conteneur
-
-VOLUME : permet de définir les volumes utilisables
+*FROM ubuntu
+*COPY application.py application.py
+*RUN apt-get update
+*RUN apt-get install python -y
+*CMD ["python", "application.py"]
+*FROM : permet de définir l'image source
+*CMD : la commande par défautt lors de l'exécution du conteneur
+*EXPOSE : permet de définir le port d'écoute par défaut
+*RUN : permet d'exécuter des commandes à l'intérieur du conteneur
+*ADD : permet d'ajouter des fichier dans le conteneur
+*VOLUME : permet de définir les volumes utilisables
 
 Mes commandes :
 
@@ -169,9 +159,9 @@ Pour chercher une image par ligne de commande ``docker serach nom_image``
 Pour Nginx : 
 Dockerfile :
 
-FROM nginx
-COPY index.html /usr/share/nginx/html
-EXPOSE 80
+*FROM nginx
+*COPY index.html /usr/share/nginx/html
+*EXPOSE 80
 
 index.html :
 
