@@ -1,9 +1,7 @@
 # BigData5a
-## Commandes de bases
+## Commandes de bases - 1er cours
 
 ``docker run image_name`` : permet de créer et démarer une nouvelle instance de l'image (conteneur)
-
-si l'image n'existe pas, elle sera téléchargée à partir de docker hub
 
 ``docker run -d image_name:tag`` : permet de démarrer conteneur en arrière plan
 
