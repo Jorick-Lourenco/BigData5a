@@ -91,27 +91,27 @@ On peut asussi passer un ensemble de variables d'environnement sauvegardé dans 
 
 Définir sa propre image Docker :
 
-1. Docker commit
+#### Docker commit
 
 Exemple : partir d'une image ubuntu, installer python et vim et ajouter queqlues variables d'environnemnetsauvegardées dans un fichier.
 
-a. On commence par créer un fichier env.lst (on définit autant de variables souhaitées)
+1. On commence par créer un fichier env.lst (on définit autant de variables souhaitées)
 
-b. Pour ajouter ces variables d'environnement **``docker run --name monconteneurvariables -tdi --env-file env.lst ubuntu``**
+2. Pour ajouter ces variables d'environnement **``docker run --name monconteneurvariables -tdi --env-file env.lst ubuntu``**
 
-c. Pour installer python et vim, on rentre à l'intérieur du conteneur docker exec -ti monconteneurvariables sh
+3. Pour installer python et vim, on rentre à l'intérieur du conteneur docker exec -ti monconteneurvariables sh
 
 Pour installer python et vim : ``apt-get update``, ''apt-get install python et `àpt-get install vim``
 
-d. On quite le conteneur ``exit``
+4. On quite le conteneur ``exit``
 
-e. Pour créer une image à partir de ce conteneur ``docker commit -m "créeation d'une image ubuntu augumentée" id_conteur nom_notre_image``
+5. Pour créer une image à partir de ce conteneur ``docker commit -m "créeation d'une image ubuntu augumentée" id_conteur nom_notre_image``
 
-2.Dockerfile
+#### Dockerfile
 
-a. Créer un fichier Dockerfile 
+1. Créer un fichier Dockerfile 
 
-b. On part d'une image existente (la plus petite est alpine), copier éventuellemnet un programme et l'exécuter ....
+2. On part d'une image existente (la plus petite est alpine), copier éventuellemnet un programme et l'exécuter ....
 
 Exemple :
 
@@ -134,17 +134,25 @@ RUN : permet d'exécuter des commandes à l'intérieur du conteneur
 ADD : permet d'ajouter des fichier dans le conteneur
 VOLUME : permet de définir les volumes utilisables
 
+Mes commandes :
 
+**``docker build -t imagejorick .``**
+**``docker run image jorick``**
 
-``docker build -t imagejorick .``
-``docker run image jorick``
+Publier une image sur DockerHub :
 
-Pour déposer sur Dockerhub :
- ``docker tag imagejorick lourencoj/syoucefjoseph``
- ``docker push lourencoj/syoucefjoseph``
+1. Créer son image, soit josephadd
+2. Créer un dépôt dockerHub syoucef/joseph
+3. Se connecter à DockerHub via ligne de commande : docker login (facultatif si on utilise docker desktop)
+4. Créer un lien entre l'image josephaddet syoucef/joseph : docker tag josephadd syoucef/joseph
+5. Envoyer l'image vers Dockerhub docker push syoucef/joseph
+
+Pour chercher une image par ligne de commande docker serach nom_image
+
+ **``docker tag imagejorick lourencoj/syoucefjoseph``**
+ **``docker push lourencoj/syoucefjoseph``**
  
  Disponible via : ``docker pull lourencoj/syoucefjoseph``
- 
  
 
 Pour Nginx : 
@@ -171,19 +179,11 @@ index.html :
 
 ---------------------------------------
 
-``docker build -t imagejorick .``
+**``docker build -t imagejorick .``**
 
-``docker run -d -p 8080 imagejorick``
+**``docker run -d -p 8080 imagejorick``**
 
 
-Publier une image sur DockerHub :
 
-1. Créer son image, soit josephadd
-2. Créer un dépôt dockerHub syoucef/joseph
-3. Se connecter à DockerHub via ligne de commande : docker login (facultatif si on utilise docker desktop)
-4. Créer un lien entre l'image josephaddet syoucef/joseph : docker tag josephadd syoucef/joseph
-5. Envoyer l'image vers Dockerhub docker push syoucef/joseph
 
-Pour chercher une image par ligne de commande docker serach nom_image
 
-Exercice : publier une image de votre application Spring (utiliser une base de données H2)
