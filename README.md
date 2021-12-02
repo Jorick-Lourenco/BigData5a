@@ -204,5 +204,28 @@ Il est possible d'accéder à la CLI MongoDB avec la commande suivante: **``dock
 * db.test.find(): affiche tous les éléments contenus dans la collection test
 * db.test.find({"propriete":"autrevaleur"}): affiche l'objet possédant la propriété propriete égale à la valeur autrevaleur
 
+## Exercice à rendre
+
+On va devoir développer un micro-service qui utilise la persistance des données MongoDB. Par la suite, on va créer une image Docker de notre propre service. Le lien se trouvera au début du readme afin de la télécharger.
+
+#### Création du service 
+
+On va utiliser Intellij Idea Ultimate pour réaliser un nouveau projet Spring. On va utiliser deux dépendances principalement : ``Spring Web`` et ``MongoDB``.
+
+Nous allons créer une interfae implémentant ``MongoRepository`` que l'on va appeler ``ProduitRepository`` :
+
+```java
+
+package com.example.demo.produit;
+
+import com.example.demo.produit.Produit;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProduitRepository extends MongoRepository<Produit, String> {
+    Produit findByDescription(String description);
+    
+```
 
 
