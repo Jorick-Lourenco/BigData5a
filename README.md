@@ -228,4 +228,151 @@ public interface ProduitRepository extends MongoRepository<Produit, String> {
     
 ```
 
+Nous allons nous baser sur un modèle de stockage de produit :
+
+```java
+
+package com.example.demo.produit;
+
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.io.Serializable;
+
+@Document(collection = "produit")
+public class Produit implements Serializable {
+    @Id
+    private String id;
+
+    @Field("description")
+    private String description;
+
+    @Field("prix")
+    private double prix;
+
+    public Produit(String id, String description, double prix){
+        this.id = id;
+        this.description = description;
+        this.prix = prix;
+    }
+}
+
+```
+
+* ``@Document`` ( collection = "produit" ): symbolise la collection utilisée, ici ``produit`` créer directement dans MongoDB et qui contient 2 produits.
+* ``@Id`` : identifiant du document, généré de façon automatique.
+* ``@Field("description")`` : indication que cet attribut est converti en tant que clé/vlaeur nommée description dans les objets de la collecton ``produit`` de MongoDB.
+
+Maintenant, nous allons réaliser le Mapping qui va s'occuper de répondre à nos requêtes HTTP. Le contrôleur/service s'appelera ProduitService :
+
+```java
+
+package com.example.demo.produit;
+
+import com.example.demo.produit.Produit;
+import com.example.demo.produit.ProduitRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collection;
+
+@RestController
+@RequestMapping("/produit")
+public class ProduitService {
+    private final ProduitRepository produitRepository;
+
+    public ProduitService(ProduitRepository produitRepository){
+        this.produitRepository = produitRepository;
+
+    }
+
+    @GetMapping("/{description}/{prix}")
+    public Produit add(@PathVariable String description, @PathVariable double prix)
+    {
+        if(!description.isEmpty())
+        {
+            return produitRepository.insert(new Produit(null, description, prix));
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    @GetMapping("/{description}")
+    public Produit getById(@PathVariable String description )
+    {
+        return produitRepository.findByDescription((description));
+    }
+
+    @GetMapping
+    public Collection<Produit> get() {
+        return produitRepository.findAll();
+    }
+
+}
+
+```java
+
+Dans ce contrôleurn nous utilisons du ``GetMapping`` (GET). De plus, afin de pouvoir interagir avec la base de données MongoDB, nous avons besoin d'instancier notre ProduitRepository créé précédemment.
+
+Dans notre projet, nous utilisons les méthodes suivantes:
+
+* findAll(): permet de renvoyer l'intégralité des objets dans la collection produit
+* insert(Produit p): permet d'insérer un nouvel objet dans la base de données
+* findByDescription(description): permet de faire une recherche sur la collection produit pour trouver un objet possédant une description identique à description
+
+Enfin, nous renseignons ensuite nos informations MongoDB dans les propriétés de l'application, dans ``application.properties`` :
+
+```java
+
+spring.data.mongodb.host=monconteneurmongo
+spring.data.mongodb.database=produit
+
+```
+
+* La première ligne indique que nous utilisons un conteneur appelé ``mongodb``
+* La seconde ligne indique que notre base de données s'appelle ``produit``
+
+Pour pouvoir faire fonctionner le tout, nous devons effectuer un ``clean`` et un ``install`` directement dans Intellij Idea.
+
+#### Création du Dockerfile
+
+Nous allon créer un **Dockerfile** qui nous servira à concevoir l'image contenant notre service :
+
+```java
+
+FROM openjdk:8
+ADD target/projetmongo.jar projetmongo.jar
+CMD ["java", "-jar", "projetmongo.jar"]
+EXPOSE 8080
+
+
+```
+
+#### Lancement
+
+Nous commençons par lancer un conteneur MongoDB grâce à la commande suivante: ``docker run --name mongodb -d -p 27017:27017 mongo.`` Le port d'écoute de MongoDB est alors 27017.
+Ensuite, nous pouvons construire l'image de notre service grâce au Dockerfile créé précédemment: ``docker build -t servicemongodb .`` (L'image aura donc pour nom: service). Maintenant nous lançons un conteneur de notre service, en spécifiant que nous faisons un lien avec le conteneur MongoDB: ``docker run -p 8282:8080 --link monconteneurmongo:monconteneurmongo -d servicemongodb``.
+
+Notre service est donc disponible sur : http://localhost:8282/produit
+
+On peut effectuer différentes requêtes :
+
+* ``GET`` http://localhost/produit : liste l'ensemble des produits de la collection.
+* ``GET`` http://localhost/produit/description : renvoit l'objet correspondant à la description.
+* ``GET`` POST http://localhost/produit/{description}/{prix} : ajoute un nouveau produit ayant une description description et un prix prix dans la base de données.
+
+#### Upload de l'image sur Docker Hub
+
+Pour finir, nous allons envoyer notre image sur Docker Hub. Pour ce faire, nous allons utiliser les commandes suivantes :
+
+* ``docker tag service leokr/syoucef-mongodbservice`` : permet de faire le lien entre l'image service et le Repository leokr/syoucef-mongodbservice
+* ``docker push leokr/syoucef-mongodbservice``: permet d'envoyer la dernière version de l'image sur Docker Hub
+
+
 
