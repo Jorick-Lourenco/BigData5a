@@ -1,4 +1,9 @@
 # BigData5a
+
+## Lien de téléchargement image Docker 
+
+https://hub.docker.com/r/lourencoj/mongodbservice
+
 ## Commandes de bases - 1er cours
 
 **``docker run image_name``** : permet de créer et démarer une nouvelle instance de l'image (conteneur)
@@ -371,8 +376,8 @@ On peut effectuer différentes requêtes :
 
 Pour finir, nous allons envoyer notre image sur Docker Hub. Pour ce faire, nous allons utiliser les commandes suivantes :
 
-* ``docker tag service leokr/syoucef-mongodbservice`` : permet de faire le lien entre l'image service et le Repository leokr/syoucef-mongodbservice
-* ``docker push leokr/syoucef-mongodbservice``: permet d'envoyer la dernière version de l'image sur Docker Hub
+* ``docker tag servicemongodb lourencoj/mongodbservice`` : permet de faire le lien entre l'image service et le Repository leokr/syoucef-mongodbservice
+* ``docker push lourencoj/mongodbservice``: permet d'envoyer la dernière version de l'image sur Docker Hub
 
 
 
