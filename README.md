@@ -2,6 +2,8 @@
 
 ## Lien de téléchargement image Docker 
 
+Détail de l'exercice plus bas dans le Readme.
+
 https://hub.docker.com/r/lourencoj/mongodbservice
 
 ## Commandes de bases - 1er cours
