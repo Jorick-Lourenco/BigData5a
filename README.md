@@ -316,7 +316,7 @@ public class ProduitService {
 
 }
 
-```java
+```
 
 Dans ce contrôleurn nous utilisons du ``GetMapping`` (GET). De plus, afin de pouvoir interagir avec la base de données MongoDB, nous avons besoin d'instancier notre ProduitRepository créé précédemment.
 
