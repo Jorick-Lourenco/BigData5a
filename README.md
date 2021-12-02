@@ -195,7 +195,14 @@ Ce type de base de données est donc idéal lorsque les données prennent diffé
 Utilisation de l'image Docker de MongoDB: **``docker run --name mongodb -d -p 27017:27017 mongo``**
 Il est possible d'accéder à la CLI MongoDB avec la commande suivante: **``docker exec -ti *containerID* mongo``**
 
+#### Commandes MongoDB utiles
 
+* use produit: créé une base de données intitulée produit
+* db.createCollection("test"): créé une collection intitulée test
+* db.test.insert({"propriete":"valeur"}): ajoute un objet à la collection test, possedant une propriété propriete ayant la valeur valeur
+* show collections: affiche les collections
+* db.test.find(): affiche tous les éléments contenus dans la collection test
+* db.test.find({"propriete":"autrevaleur"}): affiche l'objet possédant la propriété propriete égale à la valeur autrevaleur
 
 
 
