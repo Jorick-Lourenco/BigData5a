@@ -184,6 +184,17 @@ index.html :
 
 **``docker run -d -p 8080 imagejorick``**
 
+## 2ème Cours 
+
+MongoDB est un système de gestion de base de données documentaire.
+
+Une base de données documentaire est, à la différence d'une base de données relationnelle, orientée sur les documents. Il n'existe pas de "tables" avec des relations entre-elles, ici, il s'agit de documents sous tout type de forme. Les documents ne nécessitent pas d'avoir tous les mêmes champs, ce qui permet une grande flexibilité.
+
+Ce type de base de données est donc idéal lorsque les données prennent différentes formes ou que les données sont très volumineuses.
+
+Utilisation de l'image Docker de MongoDB: **``docker run --name mongodb -d -p 27017:27017 mongo``**
+Il est possible d'accéder à la CLI MongoDB avec la commande suivante: **``docker exec -ti *containerID* mongo``**
+
 
 
 
