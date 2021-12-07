@@ -378,7 +378,7 @@ On peut effectuer différentes requêtes :
 
 Pour finir, nous allons envoyer notre image sur Docker Hub. Pour ce faire, nous allons utiliser les commandes suivantes :
 
-* ``docker tag servicemongodb lourencoj/mongodbservice`` : permet de faire le lien entre l'image service et le Repository leokr/syoucef-mongodbservice
+* ``docker tag servicemongodb lourencoj/mongodbservice`` : permet de faire le lien entre l'image service et le Repository 
 * ``docker push lourencoj/mongodbservice``: permet d'envoyer la dernière version de l'image sur Docker Hub
 
 
